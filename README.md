@@ -1,7 +1,7 @@
 # BukaSearch
-======
-Ò»¸öÓÃÀ´ËÑË÷²¼¿¨Âþ»­µÄPython½Å±¾¡£
 
-ËÑË÷½á¹û»áµ¼³öµ½output.html£¬½¨ÒéÊÖ»úÉÏÓÃä¯ÀÀÆ÷´ò¿ª£¬ÕâÑù¿ÉÒÔÖ±½Óµã¡¸ÓÃApp´ò¿ª¡¹È»ºóÊÕ²ØÁË¡£
+ä¸€ä¸ªç”¨æ¥æœç´¢å¸ƒå¡æ¼«ç”»çš„Pythonè„šæœ¬ã€‚
 
-µ±È»Ö±½ÓÓÃsqliteËÑË÷Ò²ÊÇ¿ÉÒÔµÄ¡£
+æœç´¢ç»“æžœä¼šå¯¼å‡ºåˆ°output.htmlï¼Œå»ºè®®æ‰‹æœºä¸Šç”¨æµè§ˆå™¨æ‰“å¼€ï¼Œè¿™æ ·å¯ä»¥ç›´æŽ¥ç‚¹ã€Œç”¨Appæ‰“å¼€ã€ç„¶åŽæ”¶è—äº†ã€‚
+
+å½“ç„¶ç›´æŽ¥ç”¨sqliteæœç´¢ä¹Ÿæ˜¯å¯ä»¥çš„ã€‚
