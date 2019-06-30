@@ -16,5 +16,5 @@ after_script:
   - git config --local user.name "$user_name"
   - git config --local user.email "$user_email"
   - git checkout master
-  - git commit -am "Database build at: $NOWTIME"
+  - git commit -am "Database build at $NOWTIME"
   - git push --force "https://$gh_token@github.com/sffxzzp/BukaSearch.git" master:master
