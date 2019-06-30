@@ -10,8 +10,14 @@ class common:
 		return string.encode('gbk', 'ignore').decode('gbk')
 
 class buka:
+	def __init__(self, db):
+		self.db = db
+		self.dbTime = self.getDbTime()
+	def getDbTime(self):
+		for line in sqlite3.connect(self.db).execute('select des from info where id = 0;'):
+			return line[0]
 	def search(self, string):
-		conn = sqlite3.connect('buka.db')
+		conn = sqlite3.connect(self.db)
 		cursor = conn.execute("select * from info where name like '%{}%' or author like '%{}%';".format(string, string))
 		outData = []
 		for m in cursor:
@@ -29,5 +35,5 @@ class buka:
 		print('已导出至 output.html')
 
 if __name__ == '__main__':
-	comic = buka()
-	comic.search(input('请输入要搜索的内容（名称/作者）：'))
+	comic = buka('buka.db')
+	comic.search(input('数据库日期：%s\n请输入要搜索的内容（名称/作者）：' % comic.dbTime))
