@@ -13,7 +13,8 @@ script:
   - python db.py
 
 after_script:
+  - git remote rm origin
   - git config --local user.name "$user_name"
   - git config --local user.email "%user_email"
   - git commit -am "$NOWTIME"
-  - git push
+  - git push https://$gh_token@github.com/sffxzzp/BukaSearch.git master:master
