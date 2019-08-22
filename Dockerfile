@@ -1,6 +1,6 @@
 FROM php:fpm-alpine
 COPY . .
-RUN apk add --no-cache nginx tzdata wget cron && \
+RUN apk add --no-cache nginx tzdata wget && \
     mkdir -p /run/nginx && \
     mv default.conf /etc/nginx/conf.d && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
