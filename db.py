@@ -48,7 +48,13 @@ class buka:
 	def getNewest(self):
 		newestPage = self.webpc.get('http://www.buka.cn/category/12084/%E6%9C%80%E8%BF%91%E4%B8%8A%E6%96%B0.html')
 		soup = BeautifulSoup(newestPage, 'html.parser')
-		return int(common().findstr('/detail/(\d*).html', soup.select_one('#mangawrap > li > a').get('href'))[0])
+		nNodes = soup.select('#mangawrap > li > a')
+		newestId = 0;
+		for node in nNodes:
+			id = int(common().findstr('/detail/(\d*).html', node.get('href'))[0])
+			if id > newestId:
+				newestId = id
+		return newestId
 	def getStart(self):
 		cursor = sqlite3.connect(self.db).execute('select id from info order by id desc limit 1;')
 		for line in cursor:
