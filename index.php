@@ -19,8 +19,13 @@
 	]);
 	$dbTime = $database->query('select des from info where id = 0;')->fetch()["des"];
 	$startId = (int)$database->query('select id from info order by id desc limit 1;')->fetch()["id"];
-	preg_match('/\/detail\/(\d*).html/i', geturl('http://www.buka.cn/category/12084/%E6%9C%80%E8%BF%91%E4%B8%8A%E6%96%B0.html'), $newestId);
-	$newestId = (int)$newestId[1];
+	preg_match_all('/\/detail\/(\d*).html/i', geturl('http://www.buka.cn/category/12084/%E6%9C%80%E8%BF%91%E4%B8%8A%E6%96%B0.html'), $newestIds);
+	$newestId = 0;
+	foreach ($newestIds[1] as $id) {
+		if ((int)$id > $newestId) {
+			$newestId = (int)$id;
+		}
+	}
 	if ($_POST) {
 		$searchKey = $_POST['searchKey'];
 		$searchRes = $database->query('select * from info where name like "%'.$searchKey.'%" or author like "%'.$searchKey.'%";')->fetchAll();
