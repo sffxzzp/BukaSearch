@@ -41,6 +41,7 @@ class buka:
 		self.webm.headers = {'User-Agent': 'Mozilla/5.0 (Linux; Android 9.0.0)'}
 		self.startId = self.getStart()
 		self.newestId = self.getNewest()
+		print('current: %d\tnewest:%d' % (self.startId, self.newestId))
 		self.dbTime = self.getDbTime()
 	def getDbTime(self):
 		for line in sqlite3.connect(self.db).execute('select des from info where id = 0;'):
