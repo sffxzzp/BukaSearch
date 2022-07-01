@@ -46,7 +46,11 @@ class buka:
 		for line in sqlite3.connect(self.db).execute('select des from info where id = 0;'):
 			return line[0]
 	def getNewest(self):
-		newestPage = self.webpc.get('http://www.buka.cn/category/12084/%E6%9C%80%E8%BF%91%E4%B8%8A%E6%96%B0.html')
+		newestPage = self.webpc.get('http://www.buka.cn/all/999999')
+		soup = BeautifulSoup(newestPage, 'html.parser')
+		prevPage = soup.select_one('div.page > a[rel=prev]')
+		pageId = prevPage.get('href').replace('http://www.buka.cn/all/', '')
+		newestPage = self.webpc.get('http://www.buka.cn/all/%d' % (int(pageId)+28))
 		soup = BeautifulSoup(newestPage, 'html.parser')
 		nNodes = soup.select('#mangawrap > li > a')
 		newestId = 0;
