@@ -17,7 +17,7 @@ class weblib:
 		self.jar = requests.cookies.RequestsCookieJar()
 	def get(self, url, chardet=False):
 		try:
-			req = requests.get(url, headers = self.headers, cookies = self.jar, timeout=90)
+			req = requests.get(url, headers = self.headers, cookies = self.jar, timeout=15)
 			if chardet:
 				req.encoding = requests.utils.get_encodings_from_content(req.text)[0]
 			return req.text
@@ -25,7 +25,7 @@ class weblib:
 			return ''
 	def post(self, url, postdata, chardet=False):
 		try:
-			req = requests.post(url, headers = self.headers, data = postdata, timeout=90)
+			req = requests.post(url, headers = self.headers, data = postdata, timeout=15)
 			if chardet:
 				req.encoding = requests.utils.get_encodings_from_content(req.text)[0]
 			return req.text
@@ -88,14 +88,14 @@ class buka:
 			print(curUrl)
 			curPage = self.webm.get(curUrl)
 			soup = BeautifulSoup(curPage, 'html.parser')
-			curTitle = soup.select_one('title').text.strip()
-			if curTitle == '布卡漫画':
+			if curPage == '':
 				curTitle = ''
 				curAuthor = ''
 				curDes = ''
 				curImgUrl = ''
 				avail = 0
 			else:
+				curTitle = soup.select_one('title').text.strip()
 				curAuthor = soup.select_one('.mangadir-glass-author').text.strip()
 				curDes = soup.select_one('.description_intro').text.strip()
 				curImgUrl = quote(soup.select_one('.mangadir-glass-img > img').get('src'))
